@@ -1,0 +1,41 @@
+package atul.learning.tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class LevelOrderTraversalThroughQueue {
+	Node root;
+	public static void main(String[] args) {
+		LevelOrderTraversalThroughQueue lo=new LevelOrderTraversalThroughQueue();
+		lo.root=new Node(1);
+		lo.root.left=new Node(2);
+		lo.root.right=new Node(3);
+		lo.root.left.left=new Node(4);
+		lo.root.left.right=new Node(5);
+		System.out.println("Level Order Traversal AKA Breadth First Search");
+		lo.printLevelOrder();
+		
+	}
+	private void printLevelOrder() {
+	
+		Queue<Node> queue=new LinkedList<Node>();
+		queue.add(root);
+		while(!queue.isEmpty())
+		{
+			//poll removes the present head
+			Node tempNode=queue.poll();
+			System.out.println(tempNode.key+" ");
+			if(tempNode.left!=null){
+				queue.add(tempNode.left);
+			}
+			if(tempNode.right!=null){
+				queue.add(tempNode.right);
+			}
+		}
+		
+	}
+	public LevelOrderTraversalThroughQueue() {
+		this.root = null;
+	}
+
+}
