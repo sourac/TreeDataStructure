@@ -1,0 +1,87 @@
+package atul.learning.tree;
+
+public class BinaryTree {
+
+	Node root;
+	
+	public BinaryTree() {
+	root=null;
+	}
+	
+//	public BinaryTree(int i){
+//		root=new Node(i);
+//	}
+	
+
+	public static void main(String[] args) {
+		BinaryTree tree = new BinaryTree();
+         tree.root=new Node(1);
+         tree.root.left=new Node(2);
+         tree.root.right=new Node(3);
+         tree.root.left.left=new Node(4);
+         tree.root.left.right=new Node(5);
+         
+         System.out.println("PreOrder traversal");
+         tree.printPreOrder();
+         
+         System.out.println("Inorder traversal");
+         tree.printInorder();
+         
+         System.out.println("PostOrder Travesal");
+         tree.printPostOrder();
+         
+	}
+
+private void printPostOrder() {
+	printPostOrder(this.root);
+	
+}
+
+private void printPostOrder(Node root2) {
+	if(root2==null)
+		return;
+	//first recur on the left subtree
+	printPostOrder(root2.left);
+	//recuring on the right subtree
+	printPostOrder(root2.right);
+	//printing the root element
+	System.out.println(root2.key+" ");
+}
+
+private void printInorder() {
+	printInOrder(this.root);
+	
+}
+
+private void printInOrder(Node root2) {
+	if(root2==null)
+		return;
+	//first recur the left child
+	printInOrder(root2.left);
+	//then print the data of the node
+	System.out.println(root2.key+" ");
+	//recur on right child
+	printInOrder(root2.right);
+	
+}
+
+private void printPreOrder() {
+printPreOrder(this.root);
+}
+
+private void printPreOrder(Node root2) {
+	
+	if(root2==null)
+		return;
+	
+	//first print the root node of the tree
+	System.out.println(root2.key+" ");
+	//recur the left subtree
+	printPreOrder(root2.left);
+	//recur the right subtree
+	printPreOrder(root2.right);
+	
+	
+}
+
+}
