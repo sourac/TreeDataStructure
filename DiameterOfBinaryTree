@@ -1,0 +1,48 @@
+package atul.learning.datastructure;
+
+public class DiameterOfBinaryTree {
+	Node root;
+
+	public DiameterOfBinaryTree() {
+		this.root = null;
+
+	}
+
+	public static void main(String[] args) {
+		DiameterOfBinaryTree dbt = new DiameterOfBinaryTree();
+		dbt.root = new Node(1);
+		dbt.root.left = new Node(2);
+		dbt.root.right = new Node(3);
+		dbt.root.left.left = new Node(4);
+		dbt.root.left.right = new Node(5);
+
+		System.out.println("diameter of the tree is : " + dbt.diameter());
+	}
+
+	private int diameter() {
+	
+		return diameter(this.root);
+	}
+
+	private int diameter(Node root2) {
+		if(root2==null)
+			return 0;
+		int lheight=height(root2.left);
+		int rheight=height(root2.right);
+		
+		int ldiameter=diameter(root2.left);
+		int rdiameter=diameter(root2.right);
+		
+		
+		return Math.max(lheight+rheight+1, Math.max(ldiameter, rdiameter));
+	}
+
+	private int height(Node node) {
+		if(node==null)
+		return 0;
+		
+		/* If tree is not empty then height = 1 + max of left
+        height and right heights */
+		return (1+Math.max(height(node.left), height(node.right)));
+	}
+}
