@@ -1,0 +1,31 @@
+package com.atul.learning.Spring;
+
+public class HeightOfBinaryTree {
+	Node root;
+
+	public static void main(String[] args) {
+		HeightOfBinaryTree hbt = new HeightOfBinaryTree();
+		hbt.root = new Node(1);
+		hbt.root.left = new Node(2);
+		hbt.root.right = new Node(3);
+		hbt.root.left.left = new Node(4);
+		hbt.root.left.right = new Node(5);
+		int height = hbt.height(hbt.root);
+		System.out.println("height of tree : "+ height);
+
+	}
+
+	private int height(Node root2) {
+
+		if(root2==null)
+			return 0;
+		else{
+			int lheight=height(root2.left);
+			int rheight=height(root2.right);
+			if(lheight>rheight)
+				return (lheight+1);
+			else
+				return (rheight+1);
+		}
+	}
+}
