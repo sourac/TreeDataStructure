@@ -1,0 +1,40 @@
+package atul.learning.datastructure;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SizeOfBinaryTree {
+	Node root;
+
+	public static void main(String[] args) {
+		SizeOfBinaryTree sr = new SizeOfBinaryTree();
+		sr.root = new Node(1);
+		sr.root.left = new Node(2);
+		sr.root.right = new Node(3);
+		sr.root.left.left = new Node(4);
+		sr.root.left.right = new Node(5);
+
+		System.out.println("size of the tree : "
+				+ sr.sizeOfBt(sr.root));
+
+	}
+
+	private Integer sizeOfBt(Node root2) {
+		int count = 0;
+		if (root2 == null)
+			return 0;
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(root2);
+		while(!q.isEmpty()){
+			Node temp=q.poll();
+			count++;
+			if(temp.left!=null)
+				q.add(temp.left);
+			if(temp.right!=null)
+				q.add(temp.right);
+		}
+
+		return count;
+	}
+
+}
