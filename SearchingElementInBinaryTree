@@ -1,0 +1,43 @@
+package atul.learning.datastructure;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SearchingElementInBinaryTree {
+	Node root;
+
+	public static void main(String[] args) {
+		SearchingElementInBinaryTree sr = new SearchingElementInBinaryTree();
+		sr.root=new Node(1);
+		sr.root.left=new Node(2);
+		sr.root.right=new Node(3);
+		sr.root.left.left=new Node(4);
+		sr.root.left.right=new Node(5);
+		
+		System.out.println("element present or not in tree : " + sr.findInBt(sr.root,5));
+
+	}
+
+	private Boolean findInBt(Node root,int data) {
+		if(root==null)
+			return false;
+		Queue<Node> q=new LinkedList<Node>();
+		q.add(root);
+		while(!q.isEmpty()){
+			Node temp=q.poll();
+			if(temp.key==data)
+				return true;
+			if(temp!=null){
+				if(temp.left!=null){
+					q.add(temp.left);
+				}
+				if(temp.right!=null){
+					q.add(temp.right);
+				}
+			}
+		}
+		
+		return false;
+	}
+
+}
