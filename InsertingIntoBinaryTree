@@ -1,0 +1,50 @@
+package atul.learning.datastructure;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class InsertingIntoBinaryTree {
+	Node root;
+
+	public static void main(String[] args) {
+		InsertingIntoBinaryTree sr = new InsertingIntoBinaryTree();
+		sr.root = new Node(1);
+		sr.root.left = new Node(2);
+		sr.root.right = new Node(3);
+		sr.root.left.left = new Node(4);
+		sr.root.left.right = new Node(5);
+
+		System.out.println("element inserted into tree : "
+				+ sr.insertInBt(sr.root, 6));
+
+	}
+
+	private Boolean insertInBt(Node root, int i) {
+		if (root == null) {
+			return false;
+		}
+		Queue<Node> q=new LinkedList<Node>();
+		q.add(root);
+		while(!q.isEmpty()){
+			Node temp=q.poll();
+			if(temp!=null){
+				if(temp.left!=null){
+					q.add(temp.left);
+				}
+				else{
+					temp.left=new Node(i);
+					return true;
+				}
+				if(temp.right!=null){
+					q.add(temp.right);
+				}else{
+					temp.right=new Node(i);
+					return true;
+				}
+			}
+		}
+		return false;
+
+	}
+
+}
