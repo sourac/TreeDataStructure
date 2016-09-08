@@ -1,0 +1,33 @@
+package com.atul.learning.Spring;
+
+public class NodesAtKDistanceFromRoot {
+	Node root;
+
+	public static void main(String[] args) {
+		NodesAtKDistanceFromRoot tree = new NodesAtKDistanceFromRoot();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node(5);
+		tree.root.right.left = new Node(8);
+		tree.printKDistant(tree.root, 2);
+
+	}
+
+	private void printKDistant(Node root, int i) {
+		if(root==null)
+			return;
+		if(i==0){
+			System.out.print(root.key+" ");
+		return;
+		}
+		else{
+		printKDistant(root.left, i-1);
+		printKDistant(root.right, i-1);
+		}
+		
+
+	}
+
+}
